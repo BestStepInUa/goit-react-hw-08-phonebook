@@ -34,8 +34,9 @@ const RegistrationForm = ({ onSubmit, classes }) => {
   };
 
   const handleSubmit = e => {
+    const { name, email, password } = state;
     e.preventDefault();
-    onSubmit({ ...state });
+    onSubmit({ name, email, password });
     reset();
   };
 
