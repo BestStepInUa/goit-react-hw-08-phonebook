@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 import { signup, login } from './auth-operations';
 
@@ -31,8 +31,8 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-      .addMatcher([signup.pending, login.pending], pending)
-      .addMatcher([signup.rejected, login.rejected], rejected);
+      .addMatcher(isAnyOf(signup.pending, login.pending), pending)
+      .addMatcher(isAnyOf(signup.rejected, login.rejected), rejected);
   },
 });
 
