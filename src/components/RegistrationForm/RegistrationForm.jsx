@@ -41,46 +41,46 @@ class RegistrationForm extends Component {
     errorOpen: false,
   };
 
-  errorClose = e => {
-    this.setState({
-      errorOpen: false,
-    });
-  };
+  // errorClose = e => {
+  //   this.setState({
+  //     errorOpen: false,
+  //   });
+  // };
 
-  handleChange = name => e => {
-    this.setState({
-      [name]: e.target.value,
-    });
-  };
+  // handleChange = name => e => {
+  //   this.setState({
+  //     [name]: e.target.value,
+  //   });
+  // };
 
-  passwordMatch = () => this.state.password === this.state.passwordConfrim;
+  // passwordMatch = () => this.state.password === this.state.passwordConfrim;
 
-  showPassword = () => {
-    this.setState(prevState => ({ hidePassword: !prevState.hidePassword }));
-  };
+  // showPassword = () => {
+  //   this.setState(prevState => ({ hidePassword: !prevState.hidePassword }));
+  // };
 
-  isValid = () => {
-    if (this.state.email === '') {
-      return false;
-    }
-    return true;
-  };
-  submitRegistration = e => {
-    e.preventDefault();
-    if (!this.passwordMatch()) {
-      this.setState({
-        errorOpen: true,
-        error: "Passwords don't match",
-      });
-    }
-    const newUserCredentials = {
-      email: this.state.email,
-      password: this.state.password,
-      passwordConfrim: this.state.passwordConfrim,
-    };
-    console.log('this.props.newUserCredentials', newUserCredentials);
-    //dispath to userActions
-  };
+  // isValid = () => {
+  //   if (this.state.email === '') {
+  //     return false;
+  //   }
+  //   return true;
+  // };
+  // submitRegistration = e => {
+  //   e.preventDefault();
+  //   if (!this.passwordMatch()) {
+  //     this.setState({
+  //       errorOpen: true,
+  //       error: "Passwords don't match",
+  //     });
+  //   }
+  //   const newUserCredentials = {
+  //     email: this.state.email,
+  //     password: this.state.password,
+  //     passwordConfrim: this.state.passwordConfrim,
+  //   };
+  //   console.log('this.props.newUserCredentials', newUserCredentials);
+  //   //dispath to userActions
+  // };
 
   render() {
     const { classes } = this.props;
@@ -94,7 +94,7 @@ class RegistrationForm extends Component {
           </Avatar>
           <form
             className={classes.form}
-            onSubmit={() => this.submitRegistration}
+            // onSubmit={() => this.submitRegistration}
           >
             <FormControl required fullWidth margin="normal">
               <InputLabel htmlFor="email" className={classes.labels}>
@@ -106,7 +106,7 @@ class RegistrationForm extends Component {
                 autoComplete="email"
                 className={classes.inputs}
                 disableUnderline={true}
-                onChange={this.handleChange('email')}
+                // onChange={this.handleChange('email')}
               />
             </FormControl>
 
@@ -119,7 +119,7 @@ class RegistrationForm extends Component {
                 autoComplete="password"
                 className={classes.inputs}
                 disableUnderline={true}
-                onChange={this.handleChange('password')}
+                // onChange={this.handleChange('password')}
                 type={this.state.hidePassword ? 'password' : 'input'}
                 endAdornment={
                   this.state.hidePassword ? (
@@ -127,7 +127,7 @@ class RegistrationForm extends Component {
                       <VisibilityOffTwoToneIcon
                         fontSize="default"
                         className={classes.passwordEye}
-                        onClick={this.showPassword}
+                        // onClick={this.showPassword}
                       />
                     </InputAdornment>
                   ) : (
@@ -135,7 +135,7 @@ class RegistrationForm extends Component {
                       <VisibilityTwoToneIcon
                         fontSize="default"
                         className={classes.passwordEye}
-                        onClick={this.showPassword}
+                        // onClick={this.showPassword}
                       />
                     </InputAdornment>
                   )
@@ -152,8 +152,8 @@ class RegistrationForm extends Component {
                 autoComplete="passwordConfrim"
                 className={classes.inputs}
                 disableUnderline={true}
-                onClick={this.state.showPassword}
-                onChange={this.handleChange('passwordConfrim')}
+                // onClick={this.state.showPassword}
+                // onChange={this.handleChange('passwordConfrim')}
                 type={this.state.hidePassword ? 'password' : 'input'}
                 endAdornment={
                   this.state.hidePassword ? (
@@ -161,7 +161,7 @@ class RegistrationForm extends Component {
                       <VisibilityOffTwoToneIcon
                         fontSize="default"
                         className={classes.passwordEye}
-                        onClick={this.showPassword}
+                        // onClick={this.showPassword}
                       />
                     </InputAdornment>
                   ) : (
@@ -169,7 +169,7 @@ class RegistrationForm extends Component {
                       <VisibilityTwoToneIcon
                         fontSize="default"
                         className={classes.passwordEye}
-                        onClick={this.showPassword}
+                        //   onClick={this.showPassword}
                       />
                     </InputAdornment>
                   )
@@ -183,7 +183,7 @@ class RegistrationForm extends Component {
               variant="outlined"
               className={classes.button}
               type="submit"
-              onClick={this.submitRegistration}
+              // onClick={this.submitRegistration}
             >
               Join
             </Button>
@@ -198,7 +198,7 @@ class RegistrationForm extends Component {
                 horizontal: 'center',
               }}
               open={this.state.errorOpen}
-              onClose={this.errorClose}
+              // onClose={this.errorClose}
               autoHideDuration={3000}
             >
               <SnackbarContent
@@ -215,7 +215,7 @@ class RegistrationForm extends Component {
                   <IconButton
                     key="close"
                     aria-label="close"
-                    onClick={this.errorClose}
+                    // onClick={this.errorClose}
                   >
                     <CloseIcon color="error" />
                   </IconButton>,
