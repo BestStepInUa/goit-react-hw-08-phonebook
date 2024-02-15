@@ -29,6 +29,7 @@ const RegistrationForm = ({ onSubmit, classes }) => {
   const handleChange = e => {
     const { name, value } = e.target;
     setState({
+      ...state,
       [name]: value,
     });
   };
@@ -36,6 +37,9 @@ const RegistrationForm = ({ onSubmit, classes }) => {
   const handleSubmit = e => {
     const { name, email, password } = state;
     e.preventDefault();
+    console.log(name);
+    console.log(email);
+    console.log(password);
     onSubmit({ name, email, password });
     reset();
   };
