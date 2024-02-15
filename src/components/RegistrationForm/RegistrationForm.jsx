@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  withStyles,
   InputAdornment,
   CssBaseline,
   Paper,
@@ -13,6 +12,8 @@ import {
   SnackbarContent,
   IconButton,
 } from '@mui/material';
+import { withStyles } from '@mui/styles';
+
 import { signUp } from './RegistrationForm.styled';
 // import InputAdornment from '@material-ui/core/InputAdornment';
 
@@ -177,7 +178,7 @@ class RegistrationForm extends Component {
               />
             </FormControl>
             <Button
-              disabled={!this.isValid()}
+              // disabled={!this.isValid()}
               disableRipple
               fullWidth
               variant="outlined"

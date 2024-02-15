@@ -1,6 +1,6 @@
 import { red } from '@mui/material/colors';
 
-const orange = '#F2A74B';
+export const orange = '#F2A74B';
 const textLight = '#eaf2f4';
 const textDark = '#0D0D0D';
 const borderLight = 'rgba(206,212,218, .993)';
@@ -27,7 +27,7 @@ export const signUp = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     background:
-      'linear-gradient(180deg, rgba(169,198,217,1) 15%, rgba(242,167,75,1) 90%)',
+      'radial-gradient( 189.32% 190.93% at 59.76% -23.42%, #4f2ee8 18.03%, #fff 100% )',
     boxShadow: '.2px 12px 18px rgba(131,153,167,0.6)',
 
     '&:hover': {

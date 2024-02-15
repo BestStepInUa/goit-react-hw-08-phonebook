@@ -3,7 +3,13 @@ import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 
 const Header = () => {
   return (
-    <AppBar position="static" sx={{ background: '#2E3B55' }}>
+    <AppBar
+      position="static"
+      sx={{
+        background:
+          'radial-gradient( 189.32% 190.93% at 59.76% -23.42%, #4f2ee8 18.03%, #fff 100% )',
+      }}
+    >
       <Toolbar sx={{ height: '32px' }}>
         <Typography
           component="h1"
