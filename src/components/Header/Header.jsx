@@ -1,6 +1,6 @@
-import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, Toolbar, Typography } from '@mui/material';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
-import { CenterFocusStrong } from '@mui/icons-material';
+// import { CenterFocusStrong } from '@mui/icons-material';
 // import ContactsIcon from '@mui/icons-material/Contacts';
 
 const Header = () => {
