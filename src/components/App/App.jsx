@@ -3,8 +3,8 @@ import { Toaster } from 'react-hot-toast';
 // import ContactsList from 'components/ContactsList';
 // import ContactsFilter from 'components/ContactsFilter';
 import AppContainer from './App.styled';
-// import RegistrationPage from 'pages/RegistrationPage';
 import Header from 'components/Header';
+import RegistrationPage from 'pages/RegistrationPage';
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
       <AddContactForm />
       <ContactsFilter />
       <ContactsList /> */}
-        {/* <RegistrationPage /> */}
+        <RegistrationPage />
         <Toaster position="top-right" toastOptions={{ duration: 2000 }} />
       </AppContainer>
     </>

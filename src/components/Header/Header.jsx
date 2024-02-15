@@ -1,11 +1,9 @@
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { AppBar, Link, Toolbar, Typography } from '@mui/material';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
-// import { CenterFocusStrong } from '@mui/icons-material';
-// import ContactsIcon from '@mui/icons-material/Contacts';
 
 const Header = () => {
   return (
-    <AppBar>
+    <AppBar position="static" sx={{ background: '#2E3B55' }}>
       <Toolbar sx={{ height: '32px' }}>
         <Typography
           component="h1"
@@ -16,16 +14,26 @@ const Header = () => {
           variant="overline"
           align="left"
           color="pink"
-          display="flex"
-          columnGap="15px"
-          alignItems="center"
         >
-          My phone book{' '}
-          <ContactPhoneIcon fontSize="large" sx={{ color: '#fff' }} />
+          My phone book
         </Typography>
-        {/* <IconButton>
-          <ContactsIcon />
-        </IconButton> */}
+        <Link
+          color="inherit"
+          fontSize="20px"
+          display="flex"
+          columnGap="5px"
+          alignItems="center"
+          sx={{ flexGrow: 1, ml: '40px' }}
+          underline="none"
+        >
+          Contacts <ContactPhoneIcon fontSize="large" sx={{ color: '#fff' }} />
+        </Link>
+        <Link color="inherit" fontSize="20px" sx={{ mr: '15px' }}>
+          Login
+        </Link>
+        <Link color="inherit" fontSize="20px">
+          SignUp
+        </Link>
       </Toolbar>
     </AppBar>
   );
