@@ -28,10 +28,7 @@ const RegistrationForm = ({ onSubmit, classes }) => {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    setState({
-      ...state,
-      [name]: value,
-    });
+    setState(prevState => ({ ...prevState, [name]: value }));
   };
 
   const handleSubmit = e => {
