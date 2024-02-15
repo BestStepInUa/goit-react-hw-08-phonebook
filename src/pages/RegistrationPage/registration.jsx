@@ -1,6 +1,12 @@
 import { ThemeProvider, createTheme } from '@mui/material';
 import RegistrationForm from 'components/RegistrationForm';
 import { orange } from 'components/RegistrationForm/RegistrationForm.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { signup } from '../../redux/auth/auth-operations';
+import {
+  selectAuthError,
+  selectAuthLoading,
+} from '../../redux/auth/auth-selectors';
 
 const theme = createTheme({
   status: {
@@ -9,10 +15,25 @@ const theme = createTheme({
 });
 
 const RegistrationPage = () => {
+  const authLoading = useSelector(selectAuthLoading);
+  const authError = useSelector(selectAuthError);
+  // const isLogin = useSelector(selectIsLogin);
+
+  const dispatch = useDispatch();
+
+  const handleSignup = data => {
+    dispatch(signup(data));
+  };
+
   return (
-    <ThemeProvider theme={theme}>
-      <RegistrationForm />
-    </ThemeProvider>
+    <main>
+      <h1>Please Sign Up</h1>
+      {authLoading && <p>....Register in progress</p>}
+      <ThemeProvider theme={theme}>
+        <RegistrationForm onSubmit={handleSignup} />
+      </ThemeProvider>
+      {authError && <p style={{ color: 'red' }}>{authError}</p>}
+    </main>
   );
 };
 

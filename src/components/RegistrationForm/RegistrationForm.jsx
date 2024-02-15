@@ -91,8 +91,8 @@ const RegistrationForm = ({ onSubmit, classes }) => {
               Password:
             </InputLabel>
             <Input
-              name="passwordConfrim"
-              autoComplete="passwordConfrim"
+              name="password"
+              autoComplete="password"
               className={classes.inputs}
               disableUnderline={true}
               onClick={showPassword}
