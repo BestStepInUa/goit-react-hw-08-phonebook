@@ -143,7 +143,7 @@ export const signUp = theme => ({
   },
 
   passwordEye: {
-    color: 'rgba(131,153,167,0.9)',
+    color: 'rgba(255,255,255,.58)',
     opacity: 0.7,
   },
 });
