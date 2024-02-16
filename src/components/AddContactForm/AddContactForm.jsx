@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
-import { addContact } from '../../redux/operations';
-import { selectContacts } from '../../redux/selectors';
+import { addContact } from '../../redux/contacts/contacts-operations';
 import AddContactFormStyled from './Addcontactform.styled.';
+import { selectContacts } from '../../redux/contacts/contacts-selectors';
 
 const INITIAL_STATE = {
   name: '',

@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ContactItem from './ContactItem';
-import { fetchContacts } from '../../redux/operations';
+import { fetchContacts } from '../../redux/contacts/contacts-operations';
+
+import ContactsListSteled from './ContactsList.styled';
 import {
   selectError,
   selectIsLoading,
   selectVisibleContacts,
-} from '../../redux/selectors';
-import ContactsListSteled from './ContactsList.styled';
+} from '../../redux/contacts/contacts-selectors';
 
 const ContactsList = () => {
   const isLoading = useSelector(selectIsLoading);

@@ -1,19 +1,15 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { addContact, deleteContact, fetchContacts } from './operations';
+import {
+  addContact,
+  deleteContact,
+  fetchContacts,
+} from './contacts-operations';
 import { initialState } from './contactsInitialState';
-
-const handlePending = state => {
-  state.isLoading = true;
-};
+import { pending, rejected } from 'helpers/functions/redux';
 
 const handleFulfilled = state => {
   state.isLoading = false;
   state.error = null;
-};
-
-const handleRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
 };
 
 const contactsSlice = createSlice({
@@ -21,19 +17,17 @@ const contactsSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(fetchContacts.fulfilled, (state, action) => {
+      .addCase(fetchContacts.fulfilled, (state, { payload }) => {
         handleFulfilled(state);
-        state.items = action.payload;
+        state.items = payload;
       })
-      .addCase(addContact.fulfilled, (state, action) => {
+      .addCase(addContact.fulfilled, (state, { payload }) => {
         handleFulfilled(state);
-        state.items.push(action.payload);
+        state.items.push(payload);
       })
-      .addCase(deleteContact.fulfilled, (state, action) => {
+      .addCase(deleteContact.fulfilled, (state, { payload }) => {
         handleFulfilled(state);
-        const index = state.items.findIndex(
-          task => task.id === action.payload.id
-        );
+        const index = state.items.findIndex(task => task.id === payload.id);
         state.items.splice(index, 1);
       })
       .addMatcher(
@@ -42,7 +36,7 @@ const contactsSlice = createSlice({
           addContact.pending,
           deleteContact.pending
         ),
-        handlePending
+        pending
       )
       .addMatcher(
         isAnyOf(
@@ -50,7 +44,7 @@ const contactsSlice = createSlice({
           addContact.rejected,
           deleteContact.rejected
         ),
-        handleRejected
+        rejected
       );
   },
 });

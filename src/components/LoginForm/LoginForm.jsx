@@ -14,16 +14,15 @@ import VisibilityTwoToneIcon from '@mui/icons-material/VisibilityTwoTone';
 import VisibilityOffTwoToneIcon from '@mui/icons-material/VisibilityOffTwoTone';
 
 import { withStyles } from '@mui/styles';
-import { signUp } from './RegistrationForm.styled';
+import { login } from './LoginForm.styled';
 
 const INITIAL_STATE = {
-  name: '',
   email: '',
   password: '',
   hidePassword: true,
 };
 
-const RegistrationForm = ({ onSubmit, classes }) => {
+const LoginForm = ({ onSubmit, classes }) => {
   const [state, setState] = useState({ ...INITIAL_STATE });
 
   const handleChange = e => {
@@ -32,9 +31,9 @@ const RegistrationForm = ({ onSubmit, classes }) => {
   };
 
   const handleSubmit = e => {
-    const { name, email, password } = state;
+    const { email, password } = state;
     e.preventDefault();
-    onSubmit({ name, email, password });
+    onSubmit({ email, password });
     reset();
   };
 
@@ -54,25 +53,12 @@ const RegistrationForm = ({ onSubmit, classes }) => {
   return (
     <div className={classes.main}>
       <CssBaseline />
+
       <Paper className={classes.paper}>
         <Avatar className={classes.avatar}>
           <PeopleAltIcon className={classes.icon} />
         </Avatar>
         <form className={classes.form} onSubmit={handleSubmit}>
-          <FormControl required fullWidth margin="normal">
-            <InputLabel htmlFor="name" className={classes.labels}>
-              Name:
-            </InputLabel>
-            <Input
-              name="name"
-              type="text"
-              autoComplete="name"
-              className={classes.inputs}
-              disableUnderline={true}
-              onChange={handleChange}
-            />
-          </FormControl>
-
           <FormControl required fullWidth margin="normal">
             <InputLabel htmlFor="name" className={classes.labels}>
               Email:
@@ -127,7 +113,7 @@ const RegistrationForm = ({ onSubmit, classes }) => {
             className={classes.button}
             type="submit"
           >
-            Join
+            Login
           </Button>
         </form>
       </Paper>
@@ -135,4 +121,4 @@ const RegistrationForm = ({ onSubmit, classes }) => {
   );
 };
 
-export default withStyles(signUp)(RegistrationForm);
+export default withStyles(login)(LoginForm);

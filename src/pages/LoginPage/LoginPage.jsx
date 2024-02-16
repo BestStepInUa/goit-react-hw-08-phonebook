@@ -1,13 +1,13 @@
 import { ThemeProvider, createTheme } from '@mui/material';
-import RegistrationForm from 'components/RegistrationForm';
+import LoginForm from 'components/LoginForm';
 import { orange } from 'components/RegistrationForm/RegistrationForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { signup } from '../../redux/auth/auth-operations';
+import { login } from '../../redux/auth/auth-operations';
 import {
   selectAuthError,
   selectAuthLoading,
 } from '../../redux/auth/auth-selectors';
-import SignUpTitleStyled from './RegistrationPage.styled';
+import LoginTitleStyled from './LoginPage.styled';
 
 const theme = createTheme({
   status: {
@@ -15,27 +15,27 @@ const theme = createTheme({
   },
 });
 
-const RegistrationPage = () => {
+const LoginPage = () => {
   const authLoading = useSelector(selectAuthLoading);
   const authError = useSelector(selectAuthError);
   // const isLogin = useSelector(selectIsLogin);
 
   const dispatch = useDispatch();
 
-  const handleSignup = credentials => {
-    dispatch(signup(credentials));
+  const handleLogin = data => {
+    dispatch(login(data));
   };
 
   return (
     <>
-      <SignUpTitleStyled>Please Sign Up</SignUpTitleStyled>
-      {authLoading && <p>....Register in progress</p>}
+      <LoginTitleStyled>Please Login</LoginTitleStyled>
+      {authLoading && <p>....Login in progress</p>}
       <ThemeProvider theme={theme}>
-        <RegistrationForm onSubmit={handleSignup} />
+        <LoginForm onSubmit={handleLogin} />
       </ThemeProvider>
       {authError && <p style={{ color: 'red' }}>{authError}</p>}
     </>
   );
 };
 
-export default RegistrationPage;
+export default LoginPage;
