@@ -1,7 +1,7 @@
 import { AppBar, Link, Toolbar, Typography } from '@mui/material';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 
-const Header = () => {
+const SharedLayout = () => {
   return (
     <AppBar
       position="static"
@@ -45,4 +45,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default SharedLayout;

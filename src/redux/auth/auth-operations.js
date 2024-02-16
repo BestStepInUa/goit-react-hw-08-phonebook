@@ -8,14 +8,7 @@ export const signup = createAsyncThunk(
       const data = await signupRequest(credentials);
       return data;
     } catch (error) {
-      console.log(error);
-      if (error.status === 400) {
-        return rejectWithValue(`User creation error.`);
-      }
-      if (error.status === 500) {
-        return rejectWithValue(`Server error.`);
-      }
-      return rejectWithValue(error.status);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -27,14 +20,7 @@ export const login = createAsyncThunk(
       const data = await loginRequest(credentials);
       return data;
     } catch (error) {
-      console.log(error);
-      if (error.status === 400) {
-        return rejectWithValue(`Login error.`);
-      }
-      if (error.status === 500) {
-        return rejectWithValue(`Server error.`);
-      }
-      return rejectWithValue(error.status);
+      return rejectWithValue(error.message);
     }
   }
 );
