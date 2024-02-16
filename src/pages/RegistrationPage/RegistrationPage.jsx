@@ -7,6 +7,7 @@ import {
   selectAuthError,
   selectAuthLoading,
 } from '../../redux/auth/auth-selectors';
+import SignUpTitleStyled from './RegistrationPage.styled';
 
 const theme = createTheme({
   status: {
@@ -26,14 +27,14 @@ const RegistrationPage = () => {
   };
 
   return (
-    <main>
-      <h1>Please Sign Up</h1>
+    <>
+      <SignUpTitleStyled>Please Sign Up</SignUpTitleStyled>
       {authLoading && <p>....Register in progress</p>}
       <ThemeProvider theme={theme}>
         <RegistrationForm onSubmit={handleSignup} />
       </ThemeProvider>
       {authError && <p style={{ color: 'red' }}>{authError}</p>}
-    </main>
+    </>
   );
 };
 
