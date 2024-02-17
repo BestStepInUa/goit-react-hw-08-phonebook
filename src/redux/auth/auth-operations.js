@@ -8,8 +8,9 @@ export const signup = createAsyncThunk(
       const data = await signupRequest(credentials);
       return data;
     } catch (error) {
-      console.log(error);
-      return rejectWithValue(error.response.data.message);
+      return rejectWithValue(
+        error.response.data.message || error.response.data.code
+      );
     }
   }
 );
@@ -21,7 +22,9 @@ export const login = createAsyncThunk(
       const data = await loginRequest(credentials);
       return data;
     } catch (error) {
-      return rejectWithValue(error.response.data.message);
+      return rejectWithValue(
+        error.response.data.message || error.response.data.code
+      );
     }
   }
 );
