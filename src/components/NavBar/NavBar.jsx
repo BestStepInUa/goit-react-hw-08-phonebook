@@ -1,9 +1,10 @@
-import { AppBar, Link, Toolbar, Typography } from '@mui/material';
+import { AppBar, Toolbar, Link, Typography } from '@mui/material';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import NavbarAuth from 'components/NavbarAuth';
 import UserMenu from 'components/UserMenu';
 import { useSelector } from 'react-redux';
 import { selectIsLogin } from '../../redux/auth/auth-selectors';
+import { Link as ContactLink } from 'react-router-dom';
 
 const NavBar = () => {
   const isLogin = useSelector(selectIsLogin);
@@ -31,7 +32,8 @@ const NavBar = () => {
             My phone book
           </Typography>
           <Link
-            href="/goit-react-hw-08-phonebook/my-contacts"
+            component={ContactLink}
+            to="/my-contacts"
             color="inherit"
             fontSize="20px"
             display="flex"

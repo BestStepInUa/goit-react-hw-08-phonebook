@@ -39,11 +39,7 @@ const RegistrationPage = () => {
       <ThemeProvider theme={theme}>
         <RegistrationForm onSubmit={handleSignup} />
       </ThemeProvider>
-      {authError && (
-        <p style={{ color: 'red' }}>
-          {!authError === 11000 ? authError : 'This user is already registered'}
-        </p>
-      )}
+      {authError && <p style={{ color: 'red' }}>{authError}</p>}
     </>
   );
 };

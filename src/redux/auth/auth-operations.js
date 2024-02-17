@@ -8,9 +8,11 @@ export const signup = createAsyncThunk(
       const data = await signupRequest(credentials);
       return data;
     } catch (error) {
-      return rejectWithValue(
-        error.response.data.message || error.response.data.code
-      );
+      const customError =
+        error.response.data?.code === 11000
+          ? 'This user is already registered'
+          : error.response.data.message;
+      return rejectWithValue(customError);
     }
   }
 );
