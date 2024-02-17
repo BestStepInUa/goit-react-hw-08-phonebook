@@ -6,8 +6,10 @@ import { login } from '../../redux/auth/auth-operations';
 import {
   selectAuthError,
   selectAuthLoading,
+  selectIsLogin,
 } from '../../redux/auth/auth-selectors';
 import LoginTitleStyled from './LoginPage.styled';
+import { Navigate } from 'react-router-dom';
 
 const theme = createTheme({
   status: {
@@ -18,13 +20,17 @@ const theme = createTheme({
 const LoginPage = () => {
   const authLoading = useSelector(selectAuthLoading);
   const authError = useSelector(selectAuthError);
-  // const isLogin = useSelector(selectIsLogin);
+  const isLogin = useSelector(selectIsLogin);
 
   const dispatch = useDispatch();
 
-  const handleLogin = data => {
-    dispatch(login(data));
+  const handleLogin = credentials => {
+    dispatch(login(credentials));
   };
+
+  if (isLogin) {
+    return <Navigate to="/my-contacts" />;
+  }
 
   return (
     <>
@@ -33,7 +39,9 @@ const LoginPage = () => {
       <ThemeProvider theme={theme}>
         <LoginForm onSubmit={handleLogin} />
       </ThemeProvider>
-      {authError && <p style={{ color: 'red' }}>{authError}</p>}
+      {authError && (
+        <p style={{ color: 'red' }}>Invalid data. Check them and try again</p>
+      )}
     </>
   );
 };
