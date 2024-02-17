@@ -1,6 +1,9 @@
 import { Button, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/auth-selectors';
 
 const UserMenu = () => {
+  const { email } = useSelector(selectUser);
   return (
     <>
       <Typography
@@ -9,7 +12,7 @@ const UserMenu = () => {
         fontStyle="italic"
         sx={{ mr: '15px' }}
       >
-        user@email.com
+        {email}
       </Typography>
       <Button variant="contained" href="#text-buttons">
         Logout

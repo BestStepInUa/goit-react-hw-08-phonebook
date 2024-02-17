@@ -2,9 +2,12 @@ import { AppBar, Link, Toolbar, Typography } from '@mui/material';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import NavbarAuth from 'components/NavbarAuth';
 import UserMenu from 'components/UserMenu';
+import { useSelector } from 'react-redux';
+import { selectIsLogin } from '../../redux/auth/auth-selectors';
 
 const NavBar = () => {
-  const isLogin = false;
+  const isLogin = useSelector(selectIsLogin);
+
   return (
     <>
       <AppBar
