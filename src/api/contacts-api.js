@@ -1,7 +1,7 @@
 import instance from './auth-api';
 
 export const fetchContactsRequest = async () => {
-  const { data } = await instance.get('/contacts');
+  const data = await instance.get('/contacts');
   return data;
 };
 
