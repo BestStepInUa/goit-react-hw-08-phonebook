@@ -15,7 +15,7 @@ export const loginRequest = async credentials => {
 };
 
 export const currentRequest = async token => {
-  authInstance.defaults.headers.autorization = `Bearer ${token}`;
+  authInstance.defaults.headers.authorization = `Bearer ${token}`;
   try {
     const { data } = await authInstance.get('/users/current');
     return data;

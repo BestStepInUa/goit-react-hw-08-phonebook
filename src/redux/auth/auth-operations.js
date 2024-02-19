@@ -8,6 +8,7 @@ export const signup = createAsyncThunk(
       const data = await signupRequest(credentials);
       return data;
     } catch (error) {
+      console.log(error);
       const customError =
         error.response.data?.code === 11000
           ? 'This user is already registered'
