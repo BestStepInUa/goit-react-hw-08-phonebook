@@ -6,10 +6,8 @@ import { login } from '../../redux/auth/auth-operations';
 import {
   selectAuthError,
   selectAuthLoading,
-  selectIsLogin,
 } from '../../redux/auth/auth-selectors';
 import LoginTitleStyled from './LoginPage.styled';
-import { Navigate } from 'react-router-dom';
 
 const theme = createTheme({
   status: {
@@ -20,17 +18,12 @@ const theme = createTheme({
 const LoginPage = () => {
   const authLoading = useSelector(selectAuthLoading);
   const authError = useSelector(selectAuthError);
-  const isLogin = useSelector(selectIsLogin);
 
   const dispatch = useDispatch();
 
   const handleLogin = credentials => {
     dispatch(login(credentials));
   };
-
-  if (isLogin) {
-    return <Navigate to="/my-contacts" />;
-  }
 
   return (
     <>
