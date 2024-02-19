@@ -28,24 +28,31 @@ const NavBar = () => {
             variant="overline"
             align="left"
             color="pink"
+            sx={{ flexGrow: 1 }}
           >
             My phone book
           </Typography>
-          <Link
-            component={ContactLink}
-            to="/my-contacts"
-            color="inherit"
-            fontSize="20px"
-            display="flex"
-            columnGap="5px"
-            alignItems="center"
-            sx={{ flexGrow: 1, ml: '40px' }}
-            underline="none"
-          >
-            Contacts
-            <ContactPhoneIcon fontSize="large" sx={{ color: '#fff' }} />
-          </Link>
-          {isLogin ? <UserMenu /> : <NavbarAuth />}
+          {isLogin ? (
+            <>
+              <Link
+                component={ContactLink}
+                to="/my-contacts"
+                color="inherit"
+                fontSize="20px"
+                display="flex"
+                columnGap="5px"
+                alignItems="center"
+                sx={{ flexGrow: 1, ml: '40px' }}
+                underline="none"
+              >
+                Contacts
+                <ContactPhoneIcon fontSize="large" sx={{ color: '#fff' }} />
+              </Link>
+              <UserMenu />
+            </>
+          ) : (
+            <NavbarAuth />
+          )}
         </Toolbar>
       </AppBar>
     </>
