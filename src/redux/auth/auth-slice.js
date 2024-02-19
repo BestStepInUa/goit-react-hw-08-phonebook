@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
-import { signup, login } from './auth-operations';
+import { signup, login, current } from './auth-operations';
 
 import { pending, rejected } from 'helpers/functions/redux';
 
@@ -12,7 +12,7 @@ const initialState = {
   error: null,
 };
 
-const handleFulfilled = (state, { payload }) => {
+const handleSignupFulfilled = (state, { payload }) => {
   state.user = payload.user;
   state.token = payload.token;
   state.isLogin = true;
@@ -20,13 +20,34 @@ const handleFulfilled = (state, { payload }) => {
   state.error = null;
 };
 
+const handleCurrentFulfilled = (state, { payload }) => {
+  state.user = payload;
+  state.isLogin = true;
+  state.isLoading = false;
+  state.error = null;
+};
+
+const handleCurrentRejected = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = payload;
+  state.token = '';
+};
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: builder => {
     builder
-      .addMatcher(isAnyOf(signup.fulfilled, login.fulfilled), handleFulfilled)
-      .addMatcher(isAnyOf(signup.pending, login.pending), pending)
+      .addCase(current.fulfilled, handleCurrentFulfilled)
+      .addCase(current.rejected, handleCurrentRejected)
+      .addMatcher(
+        isAnyOf(signup.fulfilled, login.fulfilled),
+        handleSignupFulfilled
+      )
+      .addMatcher(
+        isAnyOf(signup.pending, login.pending, current.pending),
+        pending
+      )
       .addMatcher(isAnyOf(signup.rejected, login.rejected), rejected);
   },
 });

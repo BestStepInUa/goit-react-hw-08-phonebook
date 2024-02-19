@@ -13,3 +13,14 @@ export const loginRequest = async credentials => {
   const { data } = await authInstance.post('/users/login', credentials);
   return data;
 };
+
+export const currentRequest = async token => {
+  authInstance.defaults.headers.autorization = `Bearer ${token}`;
+  try {
+    const { data } = await authInstance.get('/users/current');
+    return data;
+  } catch (error) {
+    authInstance.defaults.headers.autorization = '';
+    throw error;
+  }
+};
