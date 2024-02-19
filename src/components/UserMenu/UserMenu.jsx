@@ -1,9 +1,15 @@
 import { Button, Typography } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/auth-selectors';
+import { logout } from '../../redux/auth/auth-operations';
 
 const UserMenu = () => {
   const { email } = useSelector(selectUser);
+
+  const dispatch = useDispatch();
+
+  const onLogout = () => dispatch(logout());
+
   return (
     <>
       <Typography
@@ -14,7 +20,7 @@ const UserMenu = () => {
       >
         {email}
       </Typography>
-      <Button variant="contained" href="#text-buttons">
+      <Button onClick={onLogout} variant="contained" href="#text-buttons">
         Logout
       </Button>
     </>

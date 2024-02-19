@@ -1,1 +1,6 @@
-export { signupRequest, loginRequest, currentRequest } from './auth-api';
+export {
+  signupRequest,
+  loginRequest,
+  currentRequest,
+  logoutRequest,
+} from './auth-api';

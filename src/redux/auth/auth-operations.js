@@ -1,5 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { loginRequest, signupRequest, currentRequest } from 'api';
+import {
+  loginRequest,
+  signupRequest,
+  currentRequest,
+  logoutRequest,
+} from 'api';
 
 export const signup = createAsyncThunk(
   'auth/signup',
@@ -8,7 +13,6 @@ export const signup = createAsyncThunk(
       const data = await signupRequest(credentials);
       return data;
     } catch (error) {
-      console.log(error);
       const customError =
         error.response.data?.code === 11000
           ? 'This user is already registered'
@@ -25,7 +29,6 @@ export const login = createAsyncThunk(
       const data = await loginRequest(credentials);
       return data;
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error.message);
     }
   }
@@ -39,7 +42,6 @@ export const current = createAsyncThunk(
       const data = await currentRequest(auth.token);
       return data;
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error.response.data.message);
     }
   },
@@ -50,5 +52,17 @@ export const current = createAsyncThunk(
         return false;
       }
     },
+  }
+);
+
+export const logout = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await logoutRequest();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
   }
 );
