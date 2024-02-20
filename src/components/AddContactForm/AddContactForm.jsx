@@ -7,7 +7,7 @@ import { selectContacts } from '../../redux/contacts/contacts-selectors';
 
 const INITIAL_STATE = {
   name: '',
-  phone: '',
+  number: '',
 };
 
 const AddContactForm = () => {
@@ -23,7 +23,7 @@ const AddContactForm = () => {
 
   const handelFormSubmit = evt => {
     evt.preventDefault();
-    const { name, phone } = state;
+    const { name, number } = state;
     const isDublicated = contacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
@@ -31,7 +31,7 @@ const AddContactForm = () => {
       toast.error(`${name} is already in contacts.`);
       return;
     }
-    dispatch(addContact({ name, phone }));
+    dispatch(addContact({ name, number }));
     reset();
   };
 
@@ -52,11 +52,11 @@ const AddContactForm = () => {
         />
       </label>
       <label>
-        Phone
+        number
         <input
           type="tel"
-          name="phone"
-          value={state.phone}
+          name="number"
+          value={state.number}
           required
           onChange={handelChange}
         />

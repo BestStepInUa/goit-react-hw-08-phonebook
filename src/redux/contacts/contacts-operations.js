@@ -19,9 +19,9 @@ export const fetchContacts = createAsyncThunk('contacts/fetchAll', async () => {
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
-  async ({ name, phone }) => {
+  async ({ name, number }) => {
     try {
-      const { data } = await addContactRequest('/contacts', { name, phone });
+      const { data } = await addContactRequest('/contacts', { name, number });
       return data;
     } catch (error) {
       return errorHandler();
