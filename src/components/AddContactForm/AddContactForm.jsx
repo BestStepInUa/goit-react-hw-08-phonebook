@@ -31,6 +31,7 @@ const AddContactForm = () => {
       toast.error(`${name} is already in contacts.`);
       return;
     }
+    console.log(name, number);
     dispatch(addContact({ name, number }));
     reset();
   };

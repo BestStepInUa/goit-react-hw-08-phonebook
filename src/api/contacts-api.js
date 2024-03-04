@@ -7,6 +7,7 @@ export const fetchContactsRequest = async () => {
 
 export const addContactRequest = async ({ name, number }) => {
   const data = await instance.post('/contacts', { name, number });
+  console.log(data);
   return data;
 };
 
