@@ -21,8 +21,7 @@ export const addContact = createAsyncThunk(
   'contacts/addContact',
   async ({ name, number }) => {
     try {
-      console.log(name, number);
-      const { data } = await addContactRequest('/contacts', { name, number });
+      const { data } = await addContactRequest({ name, number });
       return data;
     } catch (error) {
       return errorHandler();

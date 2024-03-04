@@ -31,7 +31,6 @@ const AddContactForm = () => {
       toast.error(`${name} is already in contacts.`);
       return;
     }
-    console.log(name, number);
     dispatch(addContact({ name, number }));
     reset();
   };
@@ -43,7 +42,7 @@ const AddContactForm = () => {
   return (
     <AddContactFormStyled onSubmit={handelFormSubmit}>
       <label>
-        Name
+        Name:
         <input
           type="text"
           name="name"
@@ -53,7 +52,7 @@ const AddContactForm = () => {
         />
       </label>
       <label>
-        number
+        Phone number:
         <input
           type="tel"
           name="number"
